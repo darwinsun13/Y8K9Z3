@@ -7,6 +7,7 @@ namespace Completed
 	public class Enemy : MovingObject
 	{
 		public int playerDamage; 							//The amount of food points to subtract from the player when attacking.
+        public int money;
 		public AudioClip attackSound1;						//First of two audio clips to play when attacking the player.
 		public AudioClip attackSound2;						//Second of two audio clips to play when attacking the player.
 		
@@ -22,6 +23,8 @@ namespace Completed
 			//Register this enemy with our instance of GameManager by adding it to a list of Enemy objects. 
 			//This allows the GameManager to issue movement commands.
 			GameManager.instance.AddEnemyToList (this);
+
+            money = Random.Range(1, 10);
 			
 			//Get and store a reference to the attached Animator component.
 			animator = GetComponent<Animator> ();
