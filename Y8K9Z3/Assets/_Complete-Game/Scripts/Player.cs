@@ -130,9 +130,8 @@ namespace Completed
 		//AttemptMove takes a generic parameter T which for Player will be of the type Wall, it also takes integers for x and y direction to move in.
 		protected override void AttemptMove <T> (int xDir, int yDir)
 		{
-			//Every time player moves, subtract from food points total.
-			food--;
-			
+            food--;
+
 			//Update food text display to reflect current score.
 			foodText.text = "Hp: " + food;
 			
@@ -227,7 +226,12 @@ namespace Completed
 		}
 		
 		
+        /*private void CheckIfGameOver() {
 
+            if (food <= 0)
+            GameManager.instance.GameOver();
+        }*/
+           
 	}
 }
 
