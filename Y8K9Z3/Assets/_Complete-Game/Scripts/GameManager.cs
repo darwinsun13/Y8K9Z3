@@ -84,7 +84,7 @@ namespace Completed
 			levelText = GameObject.Find("LevelText").GetComponent<Text>();
 			
 			//Set the text of levelText to the string "Day" and append the current level number.
-			levelText.text = "Day " + level;
+			levelText.text = "FLOOR " + level;
 			
 			//Set levelImage to active blocking player's view of the game board during setup.
 			levelImage.SetActive(true);
@@ -176,6 +176,13 @@ namespace Completed
 			//Enemies are done moving, set enemiesMoving to false.
 			enemiesMoving = false;
 		}
+
+        /*public void GameOver()
+        {
+            levelText.text = "Test" + level;
+            levelImage.SetActive(true);
+            enabled = false;
+        }*/
 	}
 }
 

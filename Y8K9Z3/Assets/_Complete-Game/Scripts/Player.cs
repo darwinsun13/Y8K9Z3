@@ -12,7 +12,9 @@ namespace Completed
 		public int pointsPerFood = 10;				//Number of points to add to player food points when picking up a food object.
 		public int pointsPerSoda = 20;				//Number of points to add to player food points when picking up a soda object.
 		public int wallDamage = 1;					//How much damage a player does to a wall when chopping it.
+        public int attackDamage = 1;                //How much damage a player does to an enemy when attacking it.
 		public Text foodText;						//UI Text to display current player food total.
+        public int direction = 0;                   //Direction the player is facing.
 
 		private Animator animator;					//Used to store a reference to the Player's animator component.
 		private int food;                           //Used to store player food points total during level.
@@ -124,9 +126,8 @@ namespace Completed
 		//AttemptMove takes a generic parameter T which for Player will be of the type Wall, it also takes integers for x and y direction to move in.
 		protected override void AttemptMove <T> (int xDir, int yDir)
 		{
-			//Every time player moves, subtract from food points total.
-			food--;
-			
+            food--;
+
 			//Update food text display to reflect current score.
 			foodText.text = "Hp: " + food;
 			
@@ -155,6 +156,19 @@ namespace Completed
 			//Set the attack trigger of the player's animation controller in order to play the player's attack animation.
 			animator.SetTrigger ("playerChop");
 		}
+
+        //AttemptAttack is called when the player presses the button assigned for attacking.
+        //It checks the space immediately in front of the player, based on the direction they are facing.
+        protected void AttemptAttack()
+        {
+            switch(direction)
+            {
+                case 0://north
+                    break;
+                default:
+                    break;
+            }
+        }
 		
 		
 		//OnTriggerEnter2D is sent when another object enters a trigger collider attached to this object (2D physics only).
@@ -208,7 +222,12 @@ namespace Completed
 		}
 		
 		
+        /*private void CheckIfGameOver() {
 
+            if (food <= 0)
+            GameManager.instance.GameOver();
+        }*/
+           
 	}
 }
 
