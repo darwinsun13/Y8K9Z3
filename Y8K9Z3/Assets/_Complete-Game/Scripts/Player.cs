@@ -15,7 +15,6 @@ namespace Completed
         public int attackDamage = 1;                //How much damage a player does to an enemy when attacking it.
 		public Text foodText;						//UI Text to display current player food total.
         public int direction = 0;                   //Direction the player is facing.
-        public Text moneyText;
 
 		private Animator animator;					//Used to store a reference to the Player's animator component.
 		private int food;                           //Used to store player food points total during level.
@@ -36,8 +35,6 @@ namespace Completed
 			
 			//Set the foodText to reflect the current player food total.
 			foodText.text = "Hp: " + food;
-
-            moneyText.text = "$: " + money;
 			
 			//Call the Start function of the MovingObject base class.
 			base.Start ();
@@ -49,7 +46,6 @@ namespace Completed
 		{
 			//When Player object is disabled, store the current local food total in the GameManager so it can be re-loaded in next level.
 			GameManager.instance.playerFoodPoints = food;
-            GameManager.instance.playerMoney = money;
 		}
 		
 		

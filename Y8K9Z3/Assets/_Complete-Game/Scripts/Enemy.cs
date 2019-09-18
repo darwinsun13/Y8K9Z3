@@ -7,9 +7,10 @@ namespace Completed
 	public class Enemy : MovingObject
 	{
 		public int playerDamage; 							//The amount of food points to subtract from the player when attacking.
-        public int moneyDrop;
+        public int money;
 		public AudioClip attackSound1;						//First of two audio clips to play when attacking the player.
 		public AudioClip attackSound2;						//Second of two audio clips to play when attacking the player.
+		
 		
 		private Animator animator;							//Variable of type Animator to store a reference to the enemy's Animator component.
 		private Transform target;							//Transform to attempt to move toward each turn.
@@ -23,7 +24,7 @@ namespace Completed
 			//This allows the GameManager to issue movement commands.
 			GameManager.instance.AddEnemyToList (this);
 
-            moneyDrop = RandomNumber(1,10);
+            money = Random.Range(1, 10);
 			
 			//Get and store a reference to the attached Animator component.
 			animator = GetComponent<Animator> ();
@@ -96,11 +97,5 @@ namespace Completed
 			//Call the RandomizeSfx function of SoundManager passing in the two audio clips to choose randomly between.
 			// SoundManager.instance.RandomizeSfx (attackSound1, attackSound2);
 		}
-
-        public static int RandomNumber(int min, int max)
-        {
-            Random random = new Random();
-            return random.Next();
-        }
-    }
+	}
 }
