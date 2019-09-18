@@ -18,10 +18,5 @@ public class Currency : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currencyUI.GetComponent<Text>().text = money.ToString();
-        if (money <= 0 || money == null)
-        {
-            money = 0;
-        }
     }
 }
