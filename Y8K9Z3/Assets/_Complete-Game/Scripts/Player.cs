@@ -14,7 +14,7 @@ namespace Completed
 		public int wallDamage = 1;					//How much damage a player does to a wall when chopping it.
 		public int pointsPerCoin = 10;				//Number of points to add to player food points when picking up a food object.
 		public int pointsPerPotion = 20;				//Number of points to add to player food points when picking up a soda object.
-		public int wallDamage = 1;					//How much damage a player does to a wall when chopping it.
+		//public int wallDamage = 1;					//How much damage a player does to a wall when chopping it.
         public int attackDamage = 1;                //How much damage a player does to an enemy when attacking it.
 		public Text foodText;						//UI Text to display current player food total.
         public int direction = 0;                   //Direction the player is facing.
