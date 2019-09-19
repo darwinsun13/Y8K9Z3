@@ -8,6 +8,7 @@ namespace Completed
 	{
 		public int playerDamage; 							//The amount of food points to subtract from the player when attacking.
         public int money;
+        public int hp = 1;
 		public AudioClip attackSound1;						//First of two audio clips to play when attacking the player.
 		public AudioClip attackSound2;						//Second of two audio clips to play when attacking the player.
 		
@@ -97,5 +98,19 @@ namespace Completed
 			//Call the RandomizeSfx function of SoundManager passing in the two audio clips to choose randomly between.
 			// SoundManager.instance.RandomizeSfx (attackSound1, attackSound2);
 		}
+
+        //ReceiveDamage is called whenever the enemy gets hit by an attack by the player
+        public void ReceiveDamage(int dmg)
+        {
+            //enemy loses hp
+            hp -= dmg;
+            Debug.Log("Enemy takes " + dmg + " damage.");
+            //if hp is less than 0, destroy the enemy.
+            if(hp <= 0)
+            {
+
+                gameObject.SetActive(false);
+            }
+        }
 	}
 }
