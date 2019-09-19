@@ -34,7 +34,7 @@ namespace Completed
 			food = GameManager.instance.playerFoodPoints;
 			
 			//Set the foodText to reflect the current player food total.
-			foodText.text = "Currency: " + food;
+			foodText.text = "Hp: " + food;
 			
 			//Call the Start function of the MovingObject base class.
 			base.Start ();
@@ -129,7 +129,7 @@ namespace Completed
             food--;
 
 			//Update food text display to reflect current score.
-			foodText.text = "Currency: " + food;
+			foodText.text = "Hp: " + food;
 			
 			//Call the AttemptMove method of the base class, passing in the component T (in this case Wall) and x and y direction to move.
 			base.AttemptMove <T> (xDir, yDir);
@@ -183,13 +183,13 @@ namespace Completed
 			}
 			
 			//Check if the tag of the trigger collided with is Food.
-			else if(other.tag == "Coin")
+			else if(other.tag == "Hp")
 			{
 				//Add pointsPerFood to the players current food total.
 				food += pointsPerFood;
 				
 				//Update foodText to represent current total and notify player that they gained points
-				foodText.text = "+" + pointsPerFood + " Currency: " + food;
+				foodText.text = "+" + pointsPerFood + " Hp: " + food;
 				
 				
 				//Disable the food object the player collided with.
@@ -203,7 +203,7 @@ namespace Completed
 				food += pointsPerSoda;
 				
 				//Update foodText to represent current total and notify player that they gained points
-				foodText.text = "+" + pointsPerSoda + " Currency: " + food;
+				foodText.text = "+" + pointsPerSoda + " Hp: " + food;
 			
 				//Disable the soda object the player collided with.
 				other.gameObject.SetActive (false);
