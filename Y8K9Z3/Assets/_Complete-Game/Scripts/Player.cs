@@ -9,8 +9,13 @@ namespace Completed
 	public class Player : MovingObject
 	{
 		public float restartLevelDelay = 1f;		//Delay time in seconds to restart level.
+		public int pointsPerFood = 10;				//Number of points to add to player food points when picking up a food object.
+		public int pointsPerSoda = 20;				//Number of points to add to player food points when picking up a soda object.
+		public int wallDamage = 1;					//How much damage a player does to a wall when chopping it.
+        public int attackDamage = 1;                //How much damage a player does to an enemy when attacking it.
 		public Text foodText;						//UI Text to display current player food total.
         public int direction = 0;                   //Direction the player is facing.
+
 		private Animator animator;					//Used to store a reference to the Player's animator component.
 		private int food;                           //Used to store player food points total during level.
         private int money;
@@ -121,6 +126,10 @@ namespace Completed
 		//AttemptMove takes a generic parameter T which for Player will be of the type Wall, it also takes integers for x and y direction to move in.
 		protected override void AttemptMove <T> (int xDir, int yDir)
 		{
+            food--;
+
+			//Update food text display to reflect current score.
+			foodText.text = "Hp: " + food;
 			
 			//Call the AttemptMove method of the base class, passing in the component T (in this case Wall) and x and y direction to move.
 			base.AttemptMove <T> (xDir, yDir);
@@ -175,7 +184,32 @@ namespace Completed
 				enabled = false;
 			}
 			
-	
+			//Check if the tag of the trigger collided with is Food.
+			else if(other.tag == "Hp")
+			{
+				//Add pointsPerFood to the players current food total.
+				food += pointsPerFood;
+				
+				//Update foodText to represent current total and notify player that they gained points
+				foodText.text = "+" + pointsPerFood + " Hp: " + food;
+				
+				
+				//Disable the food object the player collided with.
+				other.gameObject.SetActive (false);
+			}
+			
+			//Check if the tag of the trigger collided with is Soda.
+			else if(other.tag == "Soda")
+			{
+				//Add pointsPerSoda to players food points total
+				food += pointsPerSoda;
+				
+				//Update foodText to represent current total and notify player that they gained points
+				foodText.text = "+" + pointsPerSoda + " Hp: " + food;
+			
+				//Disable the soda object the player collided with.
+				other.gameObject.SetActive (false);
+			}
 		}
 		
 		
