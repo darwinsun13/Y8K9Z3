@@ -113,7 +113,7 @@ namespace Completed
 			{
 				//Call AttemptMove passing in the generic parameter Wall, since that is what Player may interact with if they encounter one (by attacking it)
 				//Pass in horizontal and vertical as parameters to specify the direction to move Player in.
-				AttemptMove<Enemy> (horizontal, vertical);
+				AttemptMove<Wall> (horizontal, vertical);
 			}
 		}
 		
@@ -128,6 +128,7 @@ namespace Completed
 			//Hit allows us to reference the result of the Linecast done in Move.
 			RaycastHit2D hit;
 
+
 			//Set the playersTurn boolean of GameManager to false now that players turn is over.
 			GameManager.instance.playersTurn = false;
 		}
@@ -138,12 +139,10 @@ namespace Completed
 		protected override void OnCantMove <T> (T component)
 		{
 			//Set hitWall to equal the component passed in as a parameter.
-			//Wall hitWall = component as Wall;
-            Enemy enemy = component as Enemy;
+			Wall hitWall = component as Wall;
 			
 			//Call the DamageWall function of the Wall we are hitting.
-			//hitWall.DamageWall (wallDamage);
-            enemy.ReceiveDamage (100);
+			hitWall.DamageWall (wallDamage);
 			
 			//Set the attack trigger of the player's animation controller in order to play the player's attack animation.
 			animator.SetTrigger ("playerChop");
@@ -151,12 +150,15 @@ namespace Completed
 
         //AttemptAttack is called when the player presses the button assigned for attacking.
         //It checks the space immediately in front of the player, based on the direction they are facing.
-        //Returns true if the attack hits something, false if there is nothing to hit.
-        protected bool AttemptAttack()
+        protected void AttemptAttack()
         {
-            bool hit = true;
-            
-            return hit;
+            switch(direction)
+            {
+                case 0://north
+                    break;
+                default:
+                    break;
+            }
         }
 		
 		
