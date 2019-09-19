@@ -34,7 +34,7 @@ namespace Completed
 			food = GameManager.instance.playerFoodPoints;
 			
 			//Set the foodText to reflect the current player food total.
-			foodText.text = "Hp: " + food;
+			foodText.text = "Currency: " + food;
 			
 			//Call the Start function of the MovingObject base class.
 			base.Start ();
@@ -129,7 +129,7 @@ namespace Completed
             food--;
 
 			//Update food text display to reflect current score.
-			foodText.text = "Hp: " + food;
+			foodText.text = "Currency: " + food;
 			
 			//Call the AttemptMove method of the base class, passing in the component T (in this case Wall) and x and y direction to move.
 			base.AttemptMove <T> (xDir, yDir);
@@ -189,7 +189,7 @@ namespace Completed
 				food += pointsPerFood;
 				
 				//Update foodText to represent current total and notify player that they gained points
-				foodText.text = "+" + pointsPerFood + " Hp: " + food;
+				foodText.text = "+" + pointsPerFood + " Currency: " + food;
 				
 				
 				//Disable the food object the player collided with.
@@ -203,7 +203,7 @@ namespace Completed
 				food += pointsPerSoda;
 				
 				//Update foodText to represent current total and notify player that they gained points
-				foodText.text = "+" + pointsPerSoda + " Hp: " + food;
+				foodText.text = "+" + pointsPerSoda + " Currency: " + food;
 			
 				//Disable the soda object the player collided with.
 				other.gameObject.SetActive (false);
