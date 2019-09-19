@@ -183,7 +183,7 @@ namespace Completed
 			}
 			
 			//Check if the tag of the trigger collided with is Food.
-			else if(other.tag == "Hp")
+			else if(other.tag == "Coin")
 			{
 				//Add pointsPerFood to the players current food total.
 				food += pointsPerFood;
