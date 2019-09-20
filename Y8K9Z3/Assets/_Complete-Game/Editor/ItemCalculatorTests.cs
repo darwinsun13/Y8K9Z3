@@ -16,26 +16,45 @@ public class ItemCalculatorTests
 
         // ACT
         var points = pointCalculator.CalculateTotalPoints(playerHp, potionPoints);
-        
+
         // ASSERT
         Assert.That(points, Is.EqualTo(expectedPoints));
 
     }
 
+    //[Test]
+    //public void CalculateTotalCoinPoints_Test()
+    //{
+    //    // ARRANGE
+    //    var pointCalculator = new ItemCalculator();
+    //    var playerHp = 100;
+    //    var coinPoints = 10;
+    //    var expectedPoints = (100 + 10);
+
+    //    // ACT
+    //    var points = pointCalculator.CalculateTotalPoints(playerHp, coinPoints);
+
+    //    // ASSERT
+    //    Assert.That(points, Is.EqualTo(expectedPoints));
+
+    //}
+
     [Test]
-    public void CalculateTotalCoinPoints_Test()
+    public void PotionPickedUp_Test()
     {
         // ARRANGE
-        var pointCalculator = new ItemCalculator();
-        var playerHp = 100;
-        var coinPoints = 10;
-        var expectedPoints = (100 + 10);
+        GameObject gameObject = new GameObject();
+        gameObject.AddComponent<Completed.Player>();
+        var player = gameObject.GetComponent<Completed.Player>();
+        //var potionItem = player.FindWithTag("Potion");
+        var expected = true;
 
         // ACT
-        var points = pointCalculator.CalculateTotalPoints(playerHp, coinPoints);
+        //player.OnTriggerEnter2D(potionItem);
+        var itemPickUp = player.isPickedUp;
 
         // ASSERT
-        Assert.That(points, Is.EqualTo(expectedPoints));
+        Assert.That(expected, Is.EqualTo(itemPickUp));
 
     }
 }

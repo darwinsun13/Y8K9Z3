@@ -19,7 +19,8 @@ namespace Completed
 		public Text foodText;						//UI Text to display current player food total.
         public int direction = 0;                   //Direction the player is facing.
 
-		private Animator animator;					//Used to store a reference to the Player's animator component.
+        public bool isPickedUp = true;
+        private Animator animator;					//Used to store a reference to the Player's animator component.
 		private int coin;                           //Used to store player food points total during level.
         private int money;
 #if UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
@@ -175,6 +176,7 @@ namespace Completed
             {
                 coin += pointsPerPotion;
                 foodText.text = "+" + pointsPerPotion + " Coin: " + coin;
+                isPickedUp = false;
                 other.gameObject.SetActive(false);
             }
 
