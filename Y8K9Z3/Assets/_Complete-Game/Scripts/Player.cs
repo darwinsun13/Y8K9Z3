@@ -127,6 +127,8 @@ namespace Completed
 		//AttemptMove takes a generic parameter T which for Player will be of the type Wall, it also takes integers for x and y direction to move in.
 		protected override void AttemptMove <T> (int xDir, int yDir)
 		{
+            coin--;
+
 			//Update food text display to reflect current score.
 			foodText.text = "Coin: " + coin;
 			
