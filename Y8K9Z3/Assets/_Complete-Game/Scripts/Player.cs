@@ -37,7 +37,7 @@ namespace Completed
 			coin = GameManager.instance.playerFoodPoints;
 			
 			//Set the foodText to reflect the current player food total.
-			foodText.text = "Hp: " + coin;
+			foodText.text = "Coin: " + coin;
 			
 			//Call the Start function of the MovingObject base class.
 			base.Start ();
@@ -127,10 +127,8 @@ namespace Completed
 		//AttemptMove takes a generic parameter T which for Player will be of the type Wall, it also takes integers for x and y direction to move in.
 		protected override void AttemptMove <T> (int xDir, int yDir)
 		{
-            coin--;
-
 			//Update food text display to reflect current score.
-			foodText.text = "Hp: " + coin;
+			foodText.text = "Coin: " + coin;
 			
 			//Call the AttemptMove method of the base class, passing in the component T (in this case Wall) and x and y direction to move.
 			base.AttemptMove <T> (xDir, yDir);
@@ -174,14 +172,14 @@ namespace Completed
             else if (other.tag == "Potion")
             {
                 coin += pointsPerPotion;
-                foodText.text = "+" + pointsPerPotion + " Hp: " + coin;
+                foodText.text = "+" + pointsPerPotion + " Coin: " + coin;
                 other.gameObject.SetActive(false);
             }
 
             else if (other.tag == "Coin")
             {
                 coin += pointsPerCoin;
-                foodText.text = "+" + pointsPerCoin + " Hp: " + coin;
+                foodText.text = "+" + pointsPerCoin + " Coin: " + coin;
                 other.gameObject.SetActive(false);
             }
         }
