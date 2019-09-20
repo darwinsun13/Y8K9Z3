@@ -10,8 +10,8 @@ public class ItemCalculator
     {
         int points = 0;
 
-        points += potionPoints * 20;
-        points += coinPoints * 10;
+        points += potionPoints + 20;
+        //points += coinPoints + 10;
 
         return points; 
 
