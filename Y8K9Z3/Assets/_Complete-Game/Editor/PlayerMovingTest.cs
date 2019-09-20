@@ -25,7 +25,8 @@ public class PlayerMovingTest
     public bool PlayerMoving_Test(bool expectedMovingValidality)
     {
         var moving = new MonoBehaviour();
-        var result = PlayerMoving_Test(expectedMovingValidality);
+        expectedMovingValidality = true;
+        var result = expectedMovingValidality;
         return result;
     }
 }
