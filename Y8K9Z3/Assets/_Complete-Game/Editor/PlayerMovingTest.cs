@@ -8,6 +8,7 @@ public class PlayerMovingTest
     [Test]
     public void PlayerMoving_Test_ShouldReturnTrue()
     {
+        var moving = new MonoBehaviour();
         var result = PlayerMoving_Test(true);
         Assert.IsTrue(result);
     }
@@ -15,14 +16,16 @@ public class PlayerMovingTest
     [Test]
     public void PlayerMoving_Test_ShouldReturnFalse()
     {
+        var moving = new MonoBehaviour();
         var result = PlayerMoving_Test(false);
         Assert.IsFalse(result);
     }
 
-    private bool PlayerMoving_Test(bool expectedMovingValidality)
+    [Test]
+    public bool PlayerMoving_Test(bool expectedMovingValidality)
     {
-        bool result = true;
-
+        var moving = new MonoBehaviour();
+        var result = PlayerMoving_Test(expectedMovingValidality);
         return result;
     }
 }
