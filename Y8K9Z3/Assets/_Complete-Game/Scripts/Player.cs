@@ -75,7 +75,7 @@ namespace Completed
 
 		protected override void AttemptMove <T> (int xDir, int yDir)
 		{
-            coin--;
+            
 
 			foodText.text = "Coin: " + coin;
 
