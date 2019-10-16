@@ -28,7 +28,7 @@ public class AddMoneyTest : MonoBehaviour
         var expectedCoin = 10;
 
         //ACT (When player walks over a coin)
-        coin += 1;
+        coin += 0;
 
         //Assert
         Assert.That(coin, Is.EqualTo(expectedCoin));

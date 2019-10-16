@@ -14,7 +14,8 @@ namespace Completed
 		public int pointsPerCoin = 10;				
 		public int pointsPerPotion = 20;								
         public int attackDamage = 1;                
-		public Text foodText;						
+		public Text foodText;
+        public Text currency;
         public int direction = 0;
         public int str = 1;
         public int con = 1;
@@ -23,7 +24,7 @@ namespace Completed
         public bool isPickedUp = true;
         private Animator animator;
 		private int coin;                  
-        private int money;
+        private int money = 0;
 #if UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
         private Vector2 touchOrigin = -Vector2.one;	//Used to store location of screen touch origin for mobile controls.
 #endif
@@ -119,15 +120,15 @@ namespace Completed
             else if (other.tag == "Potion")
             {
                 coin += pointsPerPotion;
-                foodText.text = "+" + pointsPerPotion + " Coin: " + coin;
+                foodText.text = "+" + pointsPerPotion + " Health: " + coin;
                 isPickedUp = false;
                 other.gameObject.SetActive(false);
             }
 
             else if (other.tag == "Coin")
             {
-                coin += pointsPerCoin;
-                foodText.text = "+" + pointsPerCoin + " Coin: " + coin;
+                money += pointsPerCoin;
+                currency.text = "$: " + money;
                 other.gameObject.SetActive(false);
             }
         }
