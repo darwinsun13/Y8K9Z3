@@ -23,7 +23,7 @@ namespace Completed
 
         public bool isPickedUp = true;
         private Animator animator;
-		private int coin;                  
+		private int health;                  
         private int money = 0;
 #if UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
         private Vector2 touchOrigin = -Vector2.one;	//Used to store location of screen touch origin for mobile controls.
@@ -34,9 +34,9 @@ namespace Completed
 		{
 			animator = GetComponent<Animator>();
 
-			coin = GameManager.instance.playerFoodPoints;
+			health = GameManager.instance.playerFoodPoints;
 
-			foodText.text = "Coin: " + coin;
+			foodText.text = "Health: " + health;
 
 			base.Start ();
 		}
@@ -44,7 +44,7 @@ namespace Completed
 		
 		private void OnDisable ()
 		{
-			GameManager.instance.playerFoodPoints = coin;
+			GameManager.instance.playerFoodPoints = health;
 		}
 		
 		
@@ -78,9 +78,9 @@ namespace Completed
 
 		protected override void AttemptMove <T> (int xDir, int yDir)
 		{
-            
+            health--;
 
-			foodText.text = "Coin: " + coin;
+			foodText.text = "Health: " + health;
 
 			base.AttemptMove <T> (xDir, yDir);
 
@@ -119,8 +119,8 @@ namespace Completed
 
             else if (other.tag == "Potion")
             {
-                coin += pointsPerPotion;
-                foodText.text = "+" + pointsPerPotion + " Health: " + coin;
+                health += pointsPerPotion;
+                foodText.text = "+" + pointsPerPotion + " Health: " + health;
                 isPickedUp = false;
                 other.gameObject.SetActive(false);
             }
