@@ -25,9 +25,6 @@ namespace Completed
         private Animator animator;
 		private int health;                  
         private int money = 0;
-        private Inventory inventory;
-        public GameObject itemButton;
-
 #if UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
         private Vector2 touchOrigin = -Vector2.one;	//Used to store location of screen touch origin for mobile controls.
 #endif
@@ -43,11 +40,6 @@ namespace Completed
 
 			base.Start ();
 		}
-
-        private void start()
-        {
-            inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-        }
 		
 		
 		private void OnDisable ()
@@ -127,18 +119,6 @@ namespace Completed
 
             else if (other.tag == "Potion")
             {
-                //for (int i = 0; i < inventory.slots.Length; i++)
-                //{
-                //    if (inventory.isFull[i] == false)
-                //    {
-                //        inventory.isFull[i] = true;
-                //        Instantiate(itemButton, inventory.slots[i].transform, false);
-                //        isPickedUp = false;
-                //        other.gameObject.SetActive(false);
-                //        break;
-                //    }
-                //}
-
                 health += pointsPerPotion;
                 foodText.text = "+" + pointsPerPotion + " Health: " + health;
                 isPickedUp = false;
