@@ -86,8 +86,12 @@ namespace Completed
 
 			RaycastHit2D hit;
 
-			GameManager.instance.playersTurn = false;
-		}
+            //Since the player has moved and lost food points, check if the game has ended.
+            CheckIfGameOver();
+
+            //Set the playersTurn boolean of GameManager to false now that players turn is over.
+            GameManager.instance.playersTurn = false;
+        }
 		
 
 		protected override void OnCantMove <T> (T component)
@@ -140,11 +144,11 @@ namespace Completed
 		}
 		
 		
-        /*private void CheckIfGameOver() {
+        private void CheckIfGameOver() {
 
-            if (food <= 0)
+            if (health <= 0)
             GameManager.instance.GameOver();
-        }*/
+        }
            
 	}
 }
