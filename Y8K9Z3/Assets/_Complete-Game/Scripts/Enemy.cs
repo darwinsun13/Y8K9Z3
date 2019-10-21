@@ -15,8 +15,15 @@ namespace Completed
         public bool isAlive = true;
 		private Animator animator;							
 		private Transform target;							
-		private bool skipMove;								
+		private bool skipMove;
+
+        public Sprite dmgSprite;
+        private SpriteRenderer spriteRenderer;
 		
+        void Awake()
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 		
 		protected override void Start ()
 		{
@@ -71,6 +78,7 @@ namespace Completed
         //ReceiveDamage is called whenever the enemy gets hit by an attack by the player
         public void ReceiveDamage(int dmg)
         {
+            spriteRenderer.sprite = dmgSprite;
             //enemy loses hp
             hp -= dmg;
             Debug.Log("Enemy takes " + dmg + " damage.");//for debug purposes

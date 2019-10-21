@@ -12,7 +12,7 @@ namespace Completed
 		public int pointsPerSoda = 20;				
 		public int wallDamage = 1;					
 		public int pointsPerCoin = 10;				
-		public int pointsPerPotion = 20;								
+		public int pointsPerPotion = 5;								
         public int attackDamage = 1;                
 		public Text foodText;
         public Text currency;
@@ -98,6 +98,7 @@ namespace Completed
 		{
             Enemy enemy = component as Enemy;
             enemy.ReceiveDamage (100);
+            animator.SetTrigger("playerChop");
 		}
 
         //AttemptAttack is called when the player presses the button assigned for attacking.
