@@ -12,10 +12,12 @@ namespace Completed
 		public int pointsPerSoda = 20;				
 		public int wallDamage = 1;					
 		public int pointsPerCoin = 10;				
-		public int pointsPerPotion = 5;								
+		public int pointsPerPotion = 5;
+        public int pointsPerbuff = 5;
         public int attackDamage = 1;                
 		public Text foodText;
         public Text currency;
+        public Text buffText;
         public int direction = 0;
         public int str = 1;
         public int con = 1;
@@ -23,6 +25,7 @@ namespace Completed
 
         public bool isPickedUp = true;
         private Animator animator;
+        private int buff = 0;
 		private int health;                  
         private int money = 0;
 #if UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
@@ -37,8 +40,9 @@ namespace Completed
 			health = GameManager.instance.playerFoodPoints;
 
 			foodText.text = "Health: " + health;
+            buffText.text = "Buff: " + buff;
 
-			base.Start ();
+            base.Start ();
 		}
 		
 		
@@ -134,6 +138,12 @@ namespace Completed
             {
                 money += pointsPerCoin;
                 currency.text = "$: " + money;
+                other.gameObject.SetActive(false);
+            }
+            else if (other.tag == "Item")
+            {
+                buff += pointsPerbuff;
+                buffText.text = "Buff: " + buff;
                 other.gameObject.SetActive(false);
             }
         }
