@@ -24,7 +24,7 @@ namespace Completed
         public bool hasHealth = true;
         public bool isPickedUp = true;
         private Animator animator;
-		private int health;                  
+		public int health = 100;                  
         private int money = 0;
 #if UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
         private Vector2 touchOrigin = -Vector2.one;	//Used to store location of screen touch origin for mobile controls.
