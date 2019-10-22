@@ -21,6 +21,7 @@ namespace Completed
         public int con = 1;
         public int dex = 1;
 
+        public bool hasHealth = true;
         public bool isPickedUp = true;
         private Animator animator;
 		private int health;                  
@@ -146,10 +147,15 @@ namespace Completed
 		}
 		
 		
-        private void CheckIfGameOver() {
+        public void CheckIfGameOver() {
 
             if (health <= 0)
-            GameManager.instance.GameOver();
+            {
+                Debug.Log("Players health has reached 0");//for debug purposes
+                hasHealth = false;
+                GameManager.instance.GameOver();
+            }
+            
         }
            
 	}
