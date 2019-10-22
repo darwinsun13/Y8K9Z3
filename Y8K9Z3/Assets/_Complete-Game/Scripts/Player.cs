@@ -16,6 +16,10 @@ namespace Completed
         public int attackDamage = 1;                
 		public Text foodText;
         public Text currency;
+
+        public int kill = 0;
+        public Text killText;
+
         public int direction = 0;
         public int str = 1;
         public int con = 1;
@@ -37,6 +41,12 @@ namespace Completed
 			health = GameManager.instance.playerFoodPoints;
 
             foodText.text = "Health: " + health;
+
+
+            kill = GameManager.instance.playerKillPoints;
+
+            killText.text = "Kill: " + kill;
+
 
             base.Start ();
 		}
@@ -110,8 +120,9 @@ namespace Completed
         protected bool AttemptAttack()
         {
             bool hit = true;
-            
+
             return hit;
+            
         }
 
 
@@ -137,6 +148,13 @@ namespace Completed
                 currency.text = "$: " + money;
                 other.gameObject.SetActive(false);
             }
+
+            else if (other.tag == "Enemy")
+            {
+                kill += 1;
+                killText.text = "Kill: " + kill;
+            }
+
 
         }
 
