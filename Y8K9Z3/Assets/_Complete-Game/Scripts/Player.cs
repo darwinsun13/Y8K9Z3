@@ -20,6 +20,7 @@ namespace Completed
         public int str = 1;
         public int con = 1;
         public int dex = 1;
+
         public bool hasHealth = true;
         public bool isPickedUp = true;
         private Animator animator;
@@ -99,8 +100,7 @@ namespace Completed
             Enemy enemy = component as Enemy;
             enemy.ReceiveDamage (100);
             animator.SetTrigger("playerChop");
-
-        }
+		}
 
         //AttemptAttack is called when the player presses the button assigned for attacking.
         //It checks the space immediately in front of the player, based on the direction they are facing.
