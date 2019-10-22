@@ -36,9 +36,9 @@ namespace Completed
 			
 			// Calculate end position based on the direction parameters passed in when calling Move.
 			Vector2 end = start + new Vector2 (xDir, yDir);
-			
-			//Disable the boxCollider so that linecast doesn't hit this object's own collider.
-			boxCollider.enabled = false;
+
+            //Disable the boxCollider so that linecast doesn't hit this object's own collider.
+            boxCollider.enabled = false;
 			
 			//Cast a line from start point to end point checking collision on blockingLayer.
 			hit = Physics2D.Linecast (start, end, blockingLayer);
