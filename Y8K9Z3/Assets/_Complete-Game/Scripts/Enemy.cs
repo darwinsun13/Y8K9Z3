@@ -11,7 +11,8 @@ namespace Completed
         public int playerDamage;
         public int money;
         public int hp = 1;
-
+        public int kill = 0;
+        public Text killText;
         public bool isAlive = true;
         private Animator animator;
         private Transform target;
@@ -34,6 +35,13 @@ namespace Completed
             animator = GetComponent<Animator>();
 
             target = GameObject.FindGameObjectWithTag("Player").transform;
+
+            kill = GameManager.instance.playerKillPoints;
+
+            if (killText != null)
+            {
+                killText.text = "Kill: " + kill;
+            }
 
 
             base.Start();
@@ -84,16 +92,14 @@ namespace Completed
 
             Debug.Log("Enemy takes " + dmg + " damage.");//for debug purposes
             //if hp is less than 0, destroy the enemy.
-
             if (hp <= 0)
             {
-
                 isAlive = false;
 
                 this.gameObject.SetActive(false);
 
+                killText.text = "Kill: " + kill;
             }
-
 
         }
 
