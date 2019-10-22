@@ -89,6 +89,7 @@ namespace Completed
             //enemy loses hp
 
             hp -= dmg;
+
             Debug.Log("Enemy takes " + dmg + " damage.");//for debug purposes
             //if hp is less than 0, destroy the enemy.
             if (hp <= 0)
@@ -97,7 +98,6 @@ namespace Completed
 
                 this.gameObject.SetActive(false);
 
-                kill += 1;
                 killText.text = "Kill: " + kill;
             }
 
