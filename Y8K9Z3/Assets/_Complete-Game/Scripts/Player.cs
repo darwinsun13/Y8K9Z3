@@ -16,14 +16,11 @@ namespace Completed
         public int attackDamage = 1;                
 		public Text foodText;
         public Text currency;
-
-        public int kill = 0;
-        public Text killText;
-
         public int direction = 0;
         public int str = 1;
         public int con = 1;
         public int dex = 1;
+
         public bool hasHealth = true;
         public bool isPickedUp = true;
         private Animator animator;
@@ -41,12 +38,6 @@ namespace Completed
 			health = GameManager.instance.playerFoodPoints;
 
             foodText.text = "Health: " + health;
-
-
-            kill = GameManager.instance.playerKillPoints;
-
-            killText.text = "Kill: " + kill;
-
 
             base.Start ();
 		}
@@ -109,8 +100,7 @@ namespace Completed
             Enemy enemy = component as Enemy;
             enemy.ReceiveDamage (100);
             animator.SetTrigger("playerChop");
-
-        }
+		}
 
         //AttemptAttack is called when the player presses the button assigned for attacking.
         //It checks the space immediately in front of the player, based on the direction they are facing.
@@ -120,9 +110,8 @@ namespace Completed
         protected bool AttemptAttack()
         {
             bool hit = true;
-
-            return hit;
             
+            return hit;
         }
 
 
@@ -148,13 +137,6 @@ namespace Completed
                 currency.text = "$: " + money;
                 other.gameObject.SetActive(false);
             }
-
-            else if (other.tag == "Enemy")
-            {
-                kill += 1;
-                killText.text = "Kill: " + kill;
-            }
-
 
         }
 

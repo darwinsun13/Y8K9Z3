@@ -11,6 +11,8 @@ namespace Completed
         public int playerDamage;
         public int money;
         public int hp = 1;
+        public int kill = 0;
+        public Text killText;
 
         public bool isAlive = true;
         private Animator animator;
@@ -35,9 +37,9 @@ namespace Completed
 
             target = GameObject.FindGameObjectWithTag("Player").transform;
 
-
             base.Start();
         }
+
 
         protected override void AttemptMove<T>(int xDir, int yDir)
         {
@@ -45,6 +47,7 @@ namespace Completed
             {
                 skipMove = false;
                 return;
+
             }
 
             base.AttemptMove<T>(xDir, yDir);
@@ -79,24 +82,22 @@ namespace Completed
         {
             spriteRenderer.sprite = dmgSprite;
             //enemy loses hp
-
             hp -= dmg;
-
             Debug.Log("Enemy takes " + dmg + " damage.");//for debug purposes
             //if hp is less than 0, destroy the enemy.
-
             if (hp <= 0)
             {
-
                 isAlive = false;
 
-                this.gameObject.SetActive(false);
+                kill = kill + 1;
 
+                this.gameObject.SetActive(false);
             }
 
+        }
+        public void getKill()
+        {
 
         }
-
-
     }
 }
